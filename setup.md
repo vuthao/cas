@@ -123,7 +123,7 @@ http://ip
 http://ip:8080
 
 
-## CAS Server 4.0.0 Release
+## CAS Server 3.5.2 Release
 
 donload https://www.apereo.org/cas/download
 
@@ -132,6 +132,7 @@ Step 1. copy modules/cas-server-webapp-VERSION.war to Tomcat's webapps/ director
 (CATALINA_HOME=/usr/share/apache-tomcat-7.0.57/webapps)
 
 Rename the WAR into cas.war.
+
 Step 2. restart tomcat
 ```
 service tomcat restart
