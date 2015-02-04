@@ -43,10 +43,10 @@ http://www.oracle.com/technetwork/java/javase/downloads/index.html
 Sử dụng Java JDK / JRE 7
 http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
 
-Sử dụng bản  jdk-7u67-linux-x64.rpm
+Sử dụng bản  jdk-7u75-linux-x64.rpm
 Upload lên server để cài đặt
 ```
-rpm  -Uvh jdk-7u67-linux-x64.rpm
+rpm  -Uvh jdk-7u75-linux-x64.rpm
 ```
 Kiểm tra: 
 ```
@@ -58,9 +58,9 @@ Step 1: download tomcat
 
 ```
 cd /usr/share
-wget http://mirrors.digipower.vn/apache/tomcat/tomcat-7/v7.0.55/bin/apache-tomcat-7.0.55.tar.gz
-tar -xzf apache-tomcat-7.0.55.tar.gz
-rm apache-tomcat-7.0.55.tar.gz -f
+wget http://mirrors.digipower.vn/apache/tomcat/tomcat-7/v7.0.57/bin/apache-tomcat-7.0.57.tar.gz
+tar -xzf apache-tomcat-7.0.57.tar.gz
+rm apache-tomcat-7.0.57.tar.gz -f
 cd /etc/init.d
 
 vi tomcat
@@ -74,11 +74,11 @@ In this new file copy the following:
 # processname: tomcat
 # chkconfig: 234 20 80
 
-JAVA_HOME=/usr/java/jdk1.7.0_67
+JAVA_HOME=/usr/java/jdk1.7.0_75
 export JAVA_HOME
 PATH=$JAVA_HOME/bin:$PATH
 export PATH
-CATALINA_HOME=/usr/share/apache-tomcat-7.0.55
+CATALINA_HOME=/usr/share/apache-tomcat-7.0.57
 
 case $1 in
 start)
@@ -129,7 +129,7 @@ donload https://www.apereo.org/cas/download
 
 Step 1. copy modules/cas-server-webapp-VERSION.war to Tomcat's webapps/ directory
 
-(CATALINA_HOME=/usr/share/apache-tomcat-7.0.55/webapps)
+(CATALINA_HOME=/usr/share/apache-tomcat-7.0.57/webapps)
 
 Rename the WAR into cas.war.
 Step 2. restart tomcat
@@ -147,7 +147,7 @@ If you are running tomcat server that runs only on HTTP, follow the 2 easy steps
 First use the keytool to create a java keystore as shown below. Make sure to note down the password that you enter while creating the keystore.
 $JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA
 ```
-/usr/java/jdk1.7.0_67/bin/keytool -genkey -alias tomcat -keyalg RSA
+/usr/java/jdk1.7.0_75/bin/keytool -genkey -alias tomcat -keyalg RSA
 ```
 (Khi cài đặt nhớ tắt bộ gõ tiếng việt)
 
@@ -180,7 +180,7 @@ This will create the .keystore file under the /root home directory as shown belo
 
 2. Modify the server.xml file
 
-Locate the /usr/share/apache-tomcat-7.0.55/conf/server.xml file located under the tomcat directory. If the Connector port=”8443″ is commented out, you should uncomment it first. Please note that the comments in the server.xml file are enclosed in <!– and –> as shown below. You should remove the 1st and last line from the following code snippet.
+Locate the /usr/share/apache-tomcat-7.0.57/conf/server.xml file located under the tomcat directory. If the Connector port=”8443″ is commented out, you should uncomment it first. Please note that the comments in the server.xml file are enclosed in <!– and –> as shown below. You should remove the 1st and last line from the following code snippet.
 
 # vi server.xml
 ```
