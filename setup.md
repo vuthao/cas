@@ -45,8 +45,13 @@ http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.h
 
 Sử dụng bản  jdk-7u67-linux-x64.rpm
 Upload lên server để cài đặt
+```
 rpm  -Uvh jdk-7u67-linux-x64.rpm
-Kiểm tra: java -version
+```
+Kiểm tra: 
+```
+java -version
+```
 
 ##  2) Install Tomcat 7
 Step 1: download tomcat
