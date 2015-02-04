@@ -231,6 +231,8 @@ Re-enter new password : p@ssw0rd2015
 {SSHA}SNZJYVhDnglMNUTIXWFVW2E2oqKpVDgQ
 ```
 
+Tham khảo tiếp: http://docs.adaptivecomputing.com/viewpoint/hpc/Content/topics/1-setup/installSetup/settingUpOpenLDAPOnCentos6.htm
+
 ## CAS LDAP
 ```
 iptables -I INPUT 1 -p tcp --dport 389 -j ACCEPT
