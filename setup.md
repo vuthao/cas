@@ -214,6 +214,23 @@ service tomcat restart
 ```
 Finally, restart the tomcat server and access the application using https://{your-ip-address}:8443/
 
+## Installing and configuring OpenLDAP on Centos 6
+
+1) Run the following command:
+
+```
+yum -y install openldap openldap-clients openldap-servers
+```
+
+2) Generate a password hash to be used as the admin password. This password hash will be used when you create the root user for your LDAP installation. For example:
+
+```
+[root]# slappasswd
+New password : p@ssw0rd2015
+Re-enter new password : p@ssw0rd2015
+{SSHA}SNZJYVhDnglMNUTIXWFVW2E2oqKpVDgQ
+```
+
 ## CAS LDAP
 ```
 iptables -I INPUT 1 -p tcp --dport 389 -j ACCEPT
