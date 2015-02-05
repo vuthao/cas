@@ -229,6 +229,7 @@ yum -y install openldap openldap-clients openldap-servers
 New password : p@ssw0rd2015
 Re-enter new password : p@ssw0rd2015
 {SSHA}SNZJYVhDnglMNUTIXWFVW2E2oqKpVDgQ
+{SSHA}oLPP47gOa2YaHOJnELqr+tYOUFuQTHi1
 ```
 
 Tham khảo tiếp: http://docs.adaptivecomputing.com/viewpoint/hpc/Content/topics/1-setup/installSetup/settingUpOpenLDAPOnCentos6.htm
