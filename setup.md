@@ -234,9 +234,50 @@ Re-enter new password : p@ssw0rd2015
 
 Tham khảo tiếp: http://docs.adaptivecomputing.com/viewpoint/hpc/Content/topics/1-setup/installSetup/settingUpOpenLDAPOnCentos6.htm
 
-## CAS LDAP
+## OPEN LDAP 389
 ```
 iptables -I INPUT 1 -p tcp --dport 389 -j ACCEPT
 service iptables save
 service iptables restart
+```
+
+## CAS LDAP
+
+Để CAS có thể lấy được thông tin người dùng từ máy chủ LDAP ta cần tải thư viện hỗ trợ từ thư mục modules 
+Chú ý: chọn lựa đúng phiên bản cas hỗ trợ và thực hiện download về và copy file (ở đây dùng phiên bản cas-3.5.2 nên ta download bản support tên cas-server-support-ldap-3.5.2.jar) cho vào thư mục /usr/share/apache-tomcat-7.0.57/webapps/cas/WEB-INF/lib (đây là đường dẫn tùy thuộc trên máy từng người, dựa vào việc cài đặt apache-tomcat ở đâu)
+
+Tiếp tục ta cần chỉnh sửa một số ở file deployerConfigContext.xml tại đường dẫn /usr/share/apache-tomcat-7.0.57/webapps/cas/WEB-INF
+
+Tìm đến đoạn
+```
+<bean 
+					class="org.jasig.cas.authentication.handler.support.SimpleTestUsernamePasswordAuthenticationHandler" />
+```
+
+Thay bằng đoạn
+```
+				<bean class="org.jasig.cas.adaptors.ldap.FastBindLdapAuthenticationHandler">
+					<property name="filter" value="uid=%u,ou=people,dc=vinades,dc=co," />
+					<property name="contextSource" ref="contextSource" />
+				</bean>
+```
+
+Tìm đến dòng </beans> ở cuối cùng, thêm lên trên đoạn sau:
+```
+	<bean id="contextSource" class="org.springframework.ldap.core.support.LdapContextSource">
+		<property name="anonymousReadOnly" value="true" />
+		<property name="pooled" value="true"/>
+		<property name="userDn" value="cn=Manager,dc=vinades,dc=com"/>
+		<property name="password" value="123456"/>
+		<property name="urls"> 
+			<list> 
+				<value>ldap://192.168.100.12:389</value>
+			</list> 
+		</property>
+		<property name="baseEnvironmentProperties">
+			<map>
+				<entry key="java.naming.security.authentication" value="simple" />
+			</map>
+		</property>
+	</bean>
 ```
