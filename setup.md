@@ -52,7 +52,10 @@ Kiểm tra:
 ```
 java -version
 ```
-
+Xóa file download về sau khi cài đặt
+```
+rm jdk-7u75-linux-x64.rpm -f
+```
 ##  2) Install Tomcat 7
 Step 1: download tomcat
 
